@@ -1,0 +1,17 @@
+FROM golang:1.18 as builder
+
+WORKDIR /app_go
+
+COPY /templates/index.html /app_go/templates/index.html
+COPY /lib /app_go/lib
+COPY . /app_go
+
+RUN go mod download
+RUN CGO_ENABLED=0 go build -o build/test
+
+
+FROM scratch
+COPY --from=builder app_go/build/test /test
+COPY --from=0 /app_go/templates /templates
+
+CMD [ "/test", "serve" ]
