@@ -10,8 +10,6 @@ git clone https://github.com/Makov-Vik/containerization.git
 ```
 
 Also, to run using docker, you must first download it. This can be done on the official [website][1]
-[1]: https://www.docker.com/products/docker-desktop/
-
 
 ### 1 - Python
 To create a docker image, use the command:
@@ -72,3 +70,6 @@ If you prefer to use Docker, then follow these commands:
 docker build -f Dockerfile -t your_name_image:01 .
 docker run --rm -it -p 8080:8080 your_name_image:01
 ```
+
+
+[1]: https://www.docker.com/products/docker-desktop/
