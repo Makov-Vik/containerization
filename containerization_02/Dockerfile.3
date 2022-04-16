@@ -1,0 +1,13 @@
+FROM golang:1.18.0-buster as build
+
+WORKDIR /app_go
+
+COPY . /app_go
+
+RUN go build -o build/test
+
+
+FROM gcr.io/distroless/base-debian11
+COPY --from=build /app_go/build/test /test
+COPY --from=0 /app_go/templates /templates
+CMD ["/test", "serve" ]
