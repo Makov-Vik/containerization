@@ -1,0 +1,9 @@
+FROM golang:1.18.0-buster
+
+WORKDIR /app_go
+
+COPY . /app_go
+
+RUN go build -o build/fizzbuzz
+
+CMD [ "./build/fizzbuzz", "serve" ]
